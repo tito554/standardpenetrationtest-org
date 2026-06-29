@@ -1,0 +1,124 @@
+<!DOCTYPE html><html lang="en"><head>
+
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+
+<title>Pacific Ring of Fire · Global M≥6 Earthquakes</title>
+<link rel="icon" type="image/svg+xml" href="/img/favicon.svg"><link rel="apple-touch-icon" href="/img/favicon.svg"><meta name="description" content="M≥6 earthquakes over the last 90 days across the Pacific Ring of Fire: Chile, Peru, Japan, Indonesia, New Zealand, Cascadia, Alaska."><meta name="theme-color" content="#0A2540">
+
+<link rel="canonical" href="https://standardpenetrationtest.org/blog/ring-of-fire/">
+
+
+
+
+
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"/>
+
+<style>:root{--primary:#0A2540;--accent:#1e3a5f;--bg:#f9fafb;--border:#e5e7eb;--muted:#64748b;--font-body:'Source Sans 3',sans-serif;--font-h:'Source Serif 4',Georgia,serif}
+
+*{box-sizing:border-box;margin:0;padding:0}body{font-family:var(--font-body);line-height:1.65;color:#1f2937;background:var(--bg)}a{color:var(--accent)}
+
+.container{max-width:1100px;margin:0 auto;padding:0 24px}header{background:var(--primary);color:#fff;padding:18px 0}header .container{display:flex;align-items:center;justify-content:space-between}header a{color:#fff;text-decoration:none}header .brand{font-family:var(--font-h);font-size:1.2rem;font-weight:700}header nav{display:flex;gap:16px;font-size:.92rem;flex-wrap:wrap}
+
+.hero{background:linear-gradient(135deg,#7c1d6f,#9a1d6a);color:#fff;padding:60px 0 40px}.hero h1{font-family:var(--font-h);font-size:2.4rem;margin-bottom:12px}.hero p{color:#fbcfe8;max-width:700px}
+
+.stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:16px;margin:24px 0}.stat{background:#fff;border:1px solid var(--border);border-radius:8px;padding:20px;text-align:center}.stat-num{font-size:2rem;font-weight:700;color:var(--primary);font-family:var(--font-h)}.stat-label{font-size:.85rem;color:var(--muted);text-transform:uppercase;letter-spacing:.05em;margin-top:4px}
+
+main{padding:40px 0 60px}.posts{display:grid;grid-template-columns:repeat(auto-fill,minmax(320px,1fr));gap:20px}footer{background:#0f172a;color:#cbd5e1;padding:28px 0;font-size:.88rem;margin-top:40px}footer a{color:#fff}</style>
+
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "Blog", "name": "Pacific Ring of Fire — Global M≥6 Earthquakes", "inLanguage": "en", "url": "https://standardpenetrationtest.org/blog/ring-of-fire/", "publisher": {"@type": "Organization", "name": "Standard Penetration Test"}, "blogPost": {"@type": "ItemList", "numberOfItems": 16}}</script>
+
+<style id="ftr-fix">footer .container>div{min-width:0}footer p,footer a{overflow-wrap:anywhere;word-break:break-word}</style><!--selfhost-fonts--><link rel="preload" href="fonts/source-sans-3-400-latin.woff2" as="font" type="font/woff2" crossorigin fetchpriority="high"><style></style><style id="selfhost-fonts">body{font-family:system-ui,-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Helvetica,Arial,sans-serif}</style></head><body>
+
+<header><div class="container"><a href="/" class="brand">Standard Penetration Test</a><nav><a href="/">Home</a><a href="/blog/ring-of-fire/">Ring of Fire</a></nav></div></header>
+
+<section class="hero"><div class="container"><h1>Pacific Ring of Fire</h1><p>Global M≥6 earthquakes over the last 90 days. Tectonic analysis of events across Chile, Peru, Japan, Indonesia, New Zealand, Cascadia (USA/CA) and Alaska. Data from the USGS Earthquake Hazards Program.</p></div></section>
+
+<main><div class="container"><div class="stats">
+
+<div class="stat"><div class="stat-num">16</div><div class="stat-label">M≥6 quakes (90d)</div></div>
+
+<div class="stat"><div class="stat-num">M 7.4</div><div class="stat-label">Max magnitude</div></div>
+
+<div class="stat"><div class="stat-num">2</div><div class="stat-label">Events M≥7.0</div></div>
+
+<div class="stat"><div class="stat-num">2</div><div class="stat-label">Sub-regions</div></div></div>
+
+<h2 style="font-family:Georgia,serif;margin:24px 0 12px;border-bottom:2px solid #7c1d6f;padding-bottom:6px;display:inline-block">Event map</h2>
+
+<div id="cf-map" style="height:480px;width:100%;border-radius:12px;border:1px solid #e5e7eb;margin-bottom:32px"></div>
+
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+
+<script>(function(){var el=document.getElementById('cf-map');if(!el||!window.L)return;var map=L.map('cf-map').setView([0,-160],2);
+
+L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',{attribution:'&copy; OSM',maxZoom:8}).addTo(map);
+
+var marks=[[39.9993,142.9851,7.4,"ENE of Miyako","quake-ene-of-miyako-m7-4-20-apr-2026"],
+
+[1.0931,126.2354,7.4,"ESE of Bitung","quake-ese-of-bitung-m7-4-01-apr-2026"],
+
+[-22.385,-68.611,6.9,"ENE of Calama","quake-ene-of-calama-m6-9-25-may-2026"],
+
+[38.9127,142.2498,6.7,"ESE of Ōfunato","quake-ese-of-funato-m6-7-15-may-2026"],
+
+[39.4377,143.3826,6.5,"E of Yamada","quake-e-of-yamada-m6-5-26-mar-2026"],
+
+[52.3258,176.3707,6.4,"ESE of Attu Station","quake-ese-of-attu-station-m6-4-04-mar-2026"],
+
+[1.1667,126.4787,6.3,"WNW of Ternate","quake-wnw-of-ternate-m6-3-02-apr-2026"],
+
+[-28.6929,-71.4786,6.2,"W of Vallenar","quake-w-of-vallenar-m6-2-13-mar-2026"],
+
+[-6.1497,130.3809,6.2,"WSW of Tual","quake-wsw-of-tual-m6-2-14-may-2026"],
+
+[-11.47,163.0974,6.2,"SE of Kirakira","quake-se-of-kirakira-m6-2-06-mar-2026"],
+
+[50.981,179.214,6.1,"Rat Islands","quake-rat-islands-m6-1-09-may-2026"],
+
+[42.7102,142.8944,6.1,"WNW of Sarabetsu","quake-wnw-of-sarabetsu-m6-1-26-apr-2026"],
+
+[-32.8047,-71.8593,6,"NW of Valparaíso","quake-nw-of-valparaiso-m6-0-31-may-2026"],
+
+[39.7683,143.1045,6,"E of Miyako","quake-e-of-miyako-m6-0-20-apr-2026"],
+
+[11.7423,125.3411,6,"WSW of Nena","quake-wsw-of-nena-m6-0-04-may-2026"],
+
+[4.8733,126.1392,6,"SE of Sarangani","quake-se-of-sarangani-m6-0-04-apr-2026"]];marks.forEach(function(m){var lon=m[1];while(lon+160>180)lon-=360;while(lon+160<-180)lon+=360;var color=m[2]>=7.5?'#7c1d6f':(m[2]>=7.0?'#dc2626':'#ea580c');
+
+L.circleMarker([m[0],lon],{radius:6+m[2],fillColor:color,color:'#fff',weight:2,fillOpacity:.85}).addTo(map)
+
+.bindPopup('<strong>M '+m[2]+'</strong><br>'+m[3]+'<br><a href="/blog/ring-of-fire/'+m[4]+'/">→</a>');});})();</script>
+
+<h2 style="font-family:Georgia,serif;margin:28px 0 12px;border-bottom:2px solid #7c1d6f;padding-bottom:6px;display:inline-block">Strongest earthquakes</h2><div class="posts"><a href="/blog/ring-of-fire/quake-ene-of-miyako-m7-4-20-apr-2026/" style="display:block;padding:20px;background:#fff;border-radius:8px;border:1px solid #e5e7eb;text-decoration:none;color:#1f2937"><div style="display:flex;align-items:center;gap:10px;margin-bottom:8px"><span style="background:#dc2626;color:#fff;padding:4px 10px;border-radius:4px;font-weight:700;font-size:.82rem">M 7.4</span><span style="font-size:.78rem;color:#64748b">🇯🇵🇳🇿 20 Apr 2026 · 07:52 UTC</span></div><h3 style="font-size:1rem;margin-bottom:6px;line-height:1.3;font-family:Georgia,serif">ENE of Miyako, Japan</h3><p style="font-size:.85rem;color:#64748b;margin:0">Depth 25 km · West Pacific (Japan/Philippines/NZ)</p></a>
+
+<a href="/blog/ring-of-fire/quake-ese-of-bitung-m7-4-01-apr-2026/" style="display:block;padding:20px;background:#fff;border-radius:8px;border:1px solid #e5e7eb;text-decoration:none;color:#1f2937"><div style="display:flex;align-items:center;gap:10px;margin-bottom:8px"><span style="background:#dc2626;color:#fff;padding:4px 10px;border-radius:4px;font-weight:700;font-size:.82rem">M 7.4</span><span style="font-size:.78rem;color:#64748b">🇯🇵🇳🇿 01 Apr 2026 · 22:48 UTC</span></div><h3 style="font-size:1rem;margin-bottom:6px;line-height:1.3;font-family:Georgia,serif">ESE of Bitung, Indonesia</h3><p style="font-size:.85rem;color:#64748b;margin:0">Depth 35 km · West Pacific (Japan/Philippines/NZ)</p></a>
+
+<a href="/blog/ring-of-fire/quake-ene-of-calama-m6-9-25-may-2026/" style="display:block;padding:20px;background:#fff;border-radius:8px;border:1px solid #e5e7eb;text-decoration:none;color:#1f2937"><div style="display:flex;align-items:center;gap:10px;margin-bottom:8px"><span style="background:#ea580c;color:#fff;padding:4px 10px;border-radius:4px;font-weight:700;font-size:.82rem">M 6.9</span><span style="font-size:.78rem;color:#64748b">🇨🇱🇵🇪 25 May 2026 · 21:52 UTC</span></div><h3 style="font-size:1rem;margin-bottom:6px;line-height:1.3;font-family:Georgia,serif">ENE of Calama, Chile</h3><p style="font-size:.85rem;color:#64748b;margin:0">Depth 109 km · South America Pacific</p></a></div><h2 style="font-family:Georgia,serif;margin:28px 0 12px;border-bottom:2px solid #7c1d6f;padding-bottom:6px;display:inline-block">Recent events</h2><div class="posts"><a href="/blog/ring-of-fire/quake-nw-of-valparaiso-m6-0-31-may-2026/" style="display:block;padding:20px;background:#fff;border-radius:8px;border:1px solid #e5e7eb;text-decoration:none;color:#1f2937"><div style="display:flex;align-items:center;gap:10px;margin-bottom:8px"><span style="background:#ea580c;color:#fff;padding:4px 10px;border-radius:4px;font-weight:700;font-size:.82rem">M 6</span><span style="font-size:.78rem;color:#64748b">🇨🇱🇵🇪 31 May 2026 · 21:34 UTC</span></div><h3 style="font-size:1rem;margin-bottom:6px;line-height:1.3;font-family:Georgia,serif">NW of Valparaíso, Chile</h3><p style="font-size:.85rem;color:#64748b;margin:0">Depth 25 km · South America Pacific</p></a>
+
+<a href="/blog/ring-of-fire/quake-ese-of-funato-m6-7-15-may-2026/" style="display:block;padding:20px;background:#fff;border-radius:8px;border:1px solid #e5e7eb;text-decoration:none;color:#1f2937"><div style="display:flex;align-items:center;gap:10px;margin-bottom:8px"><span style="background:#ea580c;color:#fff;padding:4px 10px;border-radius:4px;font-weight:700;font-size:.82rem">M 6.7</span><span style="font-size:.78rem;color:#64748b">🇯🇵🇳🇿 15 May 2026 · 11:22 UTC</span></div><h3 style="font-size:1rem;margin-bottom:6px;line-height:1.3;font-family:Georgia,serif">ESE of Ōfunato, Japan</h3><p style="font-size:.85rem;color:#64748b;margin:0">Depth 43 km · West Pacific (Japan/Philippines/NZ)</p></a>
+
+<a href="/blog/ring-of-fire/quake-wsw-of-tual-m6-2-14-may-2026/" style="display:block;padding:20px;background:#fff;border-radius:8px;border:1px solid #e5e7eb;text-decoration:none;color:#1f2937"><div style="display:flex;align-items:center;gap:10px;margin-bottom:8px"><span style="background:#ea580c;color:#fff;padding:4px 10px;border-radius:4px;font-weight:700;font-size:.82rem">M 6.2</span><span style="font-size:.78rem;color:#64748b">🇯🇵🇳🇿 14 May 2026 · 17:53 UTC</span></div><h3 style="font-size:1rem;margin-bottom:6px;line-height:1.3;font-family:Georgia,serif">WSW of Tual, Indonesia</h3><p style="font-size:.85rem;color:#64748b;margin:0">Depth 137 km · West Pacific (Japan/Philippines/NZ)</p></a></div><div style="text-align:center;margin:32px 0"><button onclick="document.getElementById('more-cf').style.display='grid';this.style.display='none'" style="background:#0A2540;color:#fff;padding:12px 28px;border:none;border-radius:6px;font-weight:600;cursor:pointer">View more earthquakes (10) →</button></div><div class="posts" id="more-cf" style="display:none;margin-top:20px"><a href="/blog/ring-of-fire/quake-e-of-yamada-m6-5-26-mar-2026/" style="display:block;padding:20px;background:#fff;border-radius:8px;border:1px solid #e5e7eb;text-decoration:none;color:#1f2937"><div style="display:flex;align-items:center;gap:10px;margin-bottom:8px"><span style="background:#ea580c;color:#fff;padding:4px 10px;border-radius:4px;font-weight:700;font-size:.82rem">M 6.5</span><span style="font-size:.78rem;color:#64748b">🇯🇵🇳🇿 26 Mar 2026 · 14:18 UTC</span></div><h3 style="font-size:1rem;margin-bottom:6px;line-height:1.3;font-family:Georgia,serif">E of Yamada, Japan</h3><p style="font-size:.85rem;color:#64748b;margin:0">Depth 16 km · West Pacific (Japan/Philippines/NZ)</p></a>
+
+<a href="/blog/ring-of-fire/quake-ese-of-attu-station-m6-4-04-mar-2026/" style="display:block;padding:20px;background:#fff;border-radius:8px;border:1px solid #e5e7eb;text-decoration:none;color:#1f2937"><div style="display:flex;align-items:center;gap:10px;margin-bottom:8px"><span style="background:#ea580c;color:#fff;padding:4px 10px;border-radius:4px;font-weight:700;font-size:.82rem">M 6.4</span><span style="font-size:.78rem;color:#64748b">🇯🇵🇳🇿 04 Mar 2026 · 17:54 UTC</span></div><h3 style="font-size:1rem;margin-bottom:6px;line-height:1.3;font-family:Georgia,serif">ESE of Attu Station, Alaska</h3><p style="font-size:.85rem;color:#64748b;margin:0">Depth 10 km · West Pacific (Japan/Philippines/NZ)</p></a>
+
+<a href="/blog/ring-of-fire/quake-wnw-of-ternate-m6-3-02-apr-2026/" style="display:block;padding:20px;background:#fff;border-radius:8px;border:1px solid #e5e7eb;text-decoration:none;color:#1f2937"><div style="display:flex;align-items:center;gap:10px;margin-bottom:8px"><span style="background:#ea580c;color:#fff;padding:4px 10px;border-radius:4px;font-weight:700;font-size:.82rem">M 6.3</span><span style="font-size:.78rem;color:#64748b">🇯🇵🇳🇿 02 Apr 2026 · 03:23 UTC</span></div><h3 style="font-size:1rem;margin-bottom:6px;line-height:1.3;font-family:Georgia,serif">WNW of Ternate, Indonesia</h3><p style="font-size:.85rem;color:#64748b;margin:0">Depth 28 km · West Pacific (Japan/Philippines/NZ)</p></a>
+
+<a href="/blog/ring-of-fire/quake-w-of-vallenar-m6-2-13-mar-2026/" style="display:block;padding:20px;background:#fff;border-radius:8px;border:1px solid #e5e7eb;text-decoration:none;color:#1f2937"><div style="display:flex;align-items:center;gap:10px;margin-bottom:8px"><span style="background:#ea580c;color:#fff;padding:4px 10px;border-radius:4px;font-weight:700;font-size:.82rem">M 6.2</span><span style="font-size:.78rem;color:#64748b">🇨🇱🇵🇪 13 Mar 2026 · 13:39 UTC</span></div><h3 style="font-size:1rem;margin-bottom:6px;line-height:1.3;font-family:Georgia,serif">W of Vallenar, Chile</h3><p style="font-size:.85rem;color:#64748b;margin:0">Depth 24 km · South America Pacific</p></a>
+
+<a href="/blog/ring-of-fire/quake-se-of-kirakira-m6-2-06-mar-2026/" style="display:block;padding:20px;background:#fff;border-radius:8px;border:1px solid #e5e7eb;text-decoration:none;color:#1f2937"><div style="display:flex;align-items:center;gap:10px;margin-bottom:8px"><span style="background:#ea580c;color:#fff;padding:4px 10px;border-radius:4px;font-weight:700;font-size:.82rem">M 6.2</span><span style="font-size:.78rem;color:#64748b">🇯🇵🇳🇿 06 Mar 2026 · 14:27 UTC</span></div><h3 style="font-size:1rem;margin-bottom:6px;line-height:1.3;font-family:Georgia,serif">SE of Kirakira, Solomon Islands</h3><p style="font-size:.85rem;color:#64748b;margin:0">Depth 10 km · West Pacific (Japan/Philippines/NZ)</p></a>
+
+<a href="/blog/ring-of-fire/quake-rat-islands-m6-1-09-may-2026/" style="display:block;padding:20px;background:#fff;border-radius:8px;border:1px solid #e5e7eb;text-decoration:none;color:#1f2937"><div style="display:flex;align-items:center;gap:10px;margin-bottom:8px"><span style="background:#ea580c;color:#fff;padding:4px 10px;border-radius:4px;font-weight:700;font-size:.82rem">M 6.1</span><span style="font-size:.78rem;color:#64748b">🇯🇵🇳🇿 09 May 2026 · 04:42 UTC</span></div><h3 style="font-size:1rem;margin-bottom:6px;line-height:1.3;font-family:Georgia,serif">Rat Islands, Alaska</h3><p style="font-size:.85rem;color:#64748b;margin:0">Depth 16 km · West Pacific (Japan/Philippines/NZ)</p></a>
+
+<a href="/blog/ring-of-fire/quake-wnw-of-sarabetsu-m6-1-26-apr-2026/" style="display:block;padding:20px;background:#fff;border-radius:8px;border:1px solid #e5e7eb;text-decoration:none;color:#1f2937"><div style="display:flex;align-items:center;gap:10px;margin-bottom:8px"><span style="background:#ea580c;color:#fff;padding:4px 10px;border-radius:4px;font-weight:700;font-size:.82rem">M 6.1</span><span style="font-size:.78rem;color:#64748b">🇯🇵🇳🇿 26 Apr 2026 · 20:23 UTC</span></div><h3 style="font-size:1rem;margin-bottom:6px;line-height:1.3;font-family:Georgia,serif">WNW of Sarabetsu, Japan</h3><p style="font-size:.85rem;color:#64748b;margin:0">Depth 81 km · West Pacific (Japan/Philippines/NZ)</p></a>
+
+<a href="/blog/ring-of-fire/quake-e-of-miyako-m6-0-20-apr-2026/" style="display:block;padding:20px;background:#fff;border-radius:8px;border:1px solid #e5e7eb;text-decoration:none;color:#1f2937"><div style="display:flex;align-items:center;gap:10px;margin-bottom:8px"><span style="background:#ea580c;color:#fff;padding:4px 10px;border-radius:4px;font-weight:700;font-size:.82rem">M 6</span><span style="font-size:.78rem;color:#64748b">🇯🇵🇳🇿 20 Apr 2026 · 07:56 UTC</span></div><h3 style="font-size:1rem;margin-bottom:6px;line-height:1.3;font-family:Georgia,serif">E of Miyako, Japan</h3><p style="font-size:.85rem;color:#64748b;margin:0">Depth 35 km · West Pacific (Japan/Philippines/NZ)</p></a>
+
+<a href="/blog/ring-of-fire/quake-wsw-of-nena-m6-0-04-may-2026/" style="display:block;padding:20px;background:#fff;border-radius:8px;border:1px solid #e5e7eb;text-decoration:none;color:#1f2937"><div style="display:flex;align-items:center;gap:10px;margin-bottom:8px"><span style="background:#ea580c;color:#fff;padding:4px 10px;border-radius:4px;font-weight:700;font-size:.82rem">M 6</span><span style="font-size:.78rem;color:#64748b">🇯🇵🇳🇿 04 May 2026 · 06:09 UTC</span></div><h3 style="font-size:1rem;margin-bottom:6px;line-height:1.3;font-family:Georgia,serif">WSW of Nena, Philippines</h3><p style="font-size:.85rem;color:#64748b;margin:0">Depth 43 km · West Pacific (Japan/Philippines/NZ)</p></a>
+
+<a href="/blog/ring-of-fire/quake-se-of-sarangani-m6-0-04-apr-2026/" style="display:block;padding:20px;background:#fff;border-radius:8px;border:1px solid #e5e7eb;text-decoration:none;color:#1f2937"><div style="display:flex;align-items:center;gap:10px;margin-bottom:8px"><span style="background:#ea580c;color:#fff;padding:4px 10px;border-radius:4px;font-weight:700;font-size:.82rem">M 6</span><span style="font-size:.78rem;color:#64748b">🇯🇵🇳🇿 04 Apr 2026 · 10:34 UTC</span></div><h3 style="font-size:1rem;margin-bottom:6px;line-height:1.3;font-family:Georgia,serif">SE of Sarangani, Philippines</h3><p style="font-size:.85rem;color:#64748b;margin:0">Depth 67 km · West Pacific (Japan/Philippines/NZ)</p></a></div>
+
+</div></main>
+
+<footer><div class="container"><p>&copy; 2026 Standard Penetration Test · Data: USGS Earthquake Hazards</p></div></footer>
+
+</body></html>
